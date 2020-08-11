@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Let's Play Tic Tac Toe</title>
+    </head>
+
+    <body>
+        <div id="container">
+            <h1 id="title">Tic-Tac-Toe</h1>
+            <div id="divReset">
+                <button id="btnReset" onclick="playGame.resetGame()">Reset Game</button>
+            </div>
+
+            <div id="message">
+                Waiting for Game to Start
+            </div>
+            
+            <div id="gameBoard">
+
+            </div>
+        </div>
+        <div id="modal-game-start" class="modal">
+            <div id="modal-startgame-content" class="modal-content">
+                <h2>Ready To Play?</h2>
+                <h3>Please Enter Your Names:</h3>
+                <label for="input-p1" id="label-input-p1" class="red">
+                    Player 1 (X)
+                    <br>
+                    <input type="text" id="input-p1" placeholder="Professor Xavier">
+                </label>
+                <br>
+                <br>
+                <label for="input-p2" id="label-input-p2" class="blue">
+                    Player 2 (O)
+                    <br>
+                    <input type="text" id="input-p2" placeholder="Doctor Octavius">
+                </label>
+                <br>
+                <br>
+                <button onclick="playGame.startGame()" id="btnStart">Start</button>
+            </div>
+        </div>
+        <div id="modal-game-end" class="modal">
+            <div id="modal-endgame-content" class="modal-content">
+                <div id="winner-text"> Waiting on Results...</div>
+                <h3> Ready to play again?</h3>
+                <br>
+                <button id="btnPlayAgain" onclick="playGame.resetGame()">Play Again</button>
+            </div>
+        </div>
+    </body>
+
+    <script src="script.js"></script>
+
+</html>

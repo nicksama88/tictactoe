@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    background-image: url(https://image.freepik.com/free-photo/back-school-blank-note-paper-with-pencil-background_131286-47.jpg);
+    background-size: cover;
+}
+
+#container {
+    text-align: center;
+}
+
+#message {
+    margin: 20px 0px 40px 0;
+    /* padding-bottom: 30px; */
+}
+
+#gameBoard {
+    background-color: black;
+    margin: auto;
+    display: none;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 2.5vh;
+    /* padding: 2vh; */
+    align-content: center;
+    height: calc(85vh - 220px);
+    width: calc(85vh - 220px);
+}
+
+.gridBox{
+    cursor: pointer;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    /* padding: 2vh; */
+    font-size: calc(15vh - 30px);
+    height: calc((80vh - 220px)/3);
+    line-height: calc((80vh - 220px)/3);
+    /* max-height: 165px; */
+}
+
+.modal {
+    /* display: none;  */
+    position: fixed;
+    /* z-index: 1; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgb(0,0,0, 0.2);
+}
+
+#modal-game-start {
+    /* display: none; */
+}
+
+#modal-game-end {
+    display: none;
+}
+
+#modal-endgame-content {
+    justify-content: center;
+    align-content: center;
+}
+
+.modal-content {
+    position: relative;
+    text-align: center;
+    padding: 5px;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 360px;
+    background: whitesmoke;
+    border-radius: 10px;
+    color: black;
+}
+
+#btnReset {
+    background-color: rgb(255, 91, 91);
+}
+
+#btnStart {
+    background-color: darkgreen;
+}
+
+#btnPlayAgain {
+    background-color: darkgreen;
+}
+
+label {
+    font-size: 2rem;
+}
+
+button {
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+input {
+    font-size: 1rem;
+}
+
+#label-input-p1 {
+    color: red;
+}
+
+#divReset {
+    margin: 15px 0;
+}
+
+#message {
+    font-size: 2em;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+#winner-text {
+    word-wrap: break-word;
+    font-size: 65px;
+}
