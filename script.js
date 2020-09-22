@@ -4,16 +4,18 @@ const endMod = document.querySelector("#modal-game-end");
 const message = document.querySelector("#message");
 const winner = document.querySelector("#winner-text");
 
-const player = (name, icon) => {
+// player structs to track name and icon
+const player = (name, icon, pColor) => {
 
     const getName = () => name;
     const getIcon = () => icon;
+    const getColor = () => pColor;
 
     const setName = (newName) => {
         name = newName;
     };
 
-    return {getName, getIcon, setName}
+    return {getName, getIcon, getColor, setName}
 
 }
 
@@ -36,10 +38,11 @@ const gameBoard = (() => {
 
     const getBoard = () => boardArray;
 
-    const addIcon = (icon, index) => {
+    const addIcon = (icon, index, playerColor) => {
         boardArray[index] = icon;
         let box = document.querySelector("#div" + index);
         box.textContent = icon;
+        box.style.color = playerColor
     };
 
     const buildBoard = () => {
@@ -58,8 +61,8 @@ const gameBoard = (() => {
 const game = (() => {
 
     // set default player values
-    const player1 = player(document.querySelector("#input-p1").placeholder, "X");
-    const player2 = player(document.querySelector("#input-p2").placeholder, "O");
+    const player1 = player(document.querySelector("#input-p1").placeholder, "X", "red");
+    const player2 = player(document.querySelector("#input-p2").placeholder, "O", "blue");
     let currentPlayer = player1;
     const board = gameBoard();
 
@@ -98,7 +101,7 @@ const game = (() => {
             alert("space already taken, please choose another space");
         } else {
             gridDiv.textContent = currentPlayer.getIcon();
-            board.addIcon(currentPlayer.getIcon(), gridID[gridID.length - 1]);
+            board.addIcon(currentPlayer.getIcon(), gridID[gridID.length - 1], currentPlayer.getColor());
 
             if (checkForWinner()) {
                 displayWinner(currentPlayer, currentPlayer === player1? "red":"blue");
