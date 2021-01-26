@@ -22,18 +22,12 @@ const player = (name, icon, pColor) => {
 const gameBoard = (() => {
 
     // initialize board
-    const boardArray = ['', '', '', '', '', '', '', '', ''];
+    const boardArray = new Array(9).fill('');
 
     const clearBoard = () => {
-        boardArray.forEach((part, index, tempArray) => {
-            tempArray[index] = '';
-        });
+        boardArray.map( (item, index) => boardArray[index] = '');
         let divNodeList = document.querySelectorAll(".gridBox");
-        divNodeList.forEach(
-            function(currentValue) {
-                currentValue.textContent = "";
-            }
-        );
+        Array.from(divNodeList, item => item.textContent = "")
     };
 
     const getBoard = () => boardArray;
@@ -46,12 +40,12 @@ const gameBoard = (() => {
     };
 
     const buildBoard = () => {
-            boardArray.forEach((element, index) => {
-                let gridBox = document.createElement("div");
-                gridBox.setAttribute("id", "div" + index);
-                gridBox.setAttribute("class", "gridBox");
-                gridBox.textContent = element;
-                divGameBoard.append(gridBox);
+        boardArray.map( (element, index) => {
+            let gridBox = document.createElement("div");
+            gridBox.setAttribute("id", "div" + index);
+            gridBox.setAttribute("class", "gridBox");
+            gridBox.textContent = element;
+            divGameBoard.append(gridBox);
         });
     }
     return {clearBoard, getBoard, addIcon, buildBoard};
@@ -85,13 +79,12 @@ const game = (() => {
         board.buildBoard()
         
         // add event listeners for clicks to board
-        const gridBoxArray = document.querySelectorAll(".gridBox");
-        gridBoxArray.forEach(boxDiv => {
-            boxDiv.addEventListener('click', function() {
+        const gridBoxArray = Array.from(document.querySelectorAll(".gridBox"));
+        gridBoxArray.map( boxDiv => {
+            boxDiv.addEventListener('click', () => {
                 playRound("" + boxDiv.id);
             });
         });
-
     };
 
     const playRound = (gridID) => {
